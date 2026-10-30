@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Warga Sirod RT 06</title>
+  <!-- PWA Manifest & Icons -->
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/png" href="https://wargasirod.my.id/img/logo-rt06.png">
+  <link rel="apple-touch-icon" href="https://wargasirod.my.id/img/logo-rt06.png">
+  <meta name="theme-color" content="#FFFFFF">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary: #4F46E5;
+      --primary-dark: #3730A3;
+      --primary-light: #EEF2FF;
+      --accent-coral: #FEE2E2;
+      --accent-coral-icon: #EF4444;
+      --accent-blue: #E0F2FE;
+      --accent-blue-icon: #0284C7;
+      --accent-purple: #F3E8FF;
+      --accent-purple-icon: #9333EA;
+      --accent-amber: #FEF3C7;
+      --accent-amber-icon: #D97706;
+      --bg-page: #F8FAFC;
+      --card-bg: #FFFFFF;
+      --text-main: #0F172A;
+      --text-sub: #64748B;
+      --bottom-nav-height: 72px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      padding-bottom: calc(var(--bottom-nav-height) + 24px);
+      min-height: 100vh;
+    }
+
+    /* Top Header */
+    .top-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 20px;
+      background: #FFFFFF;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+
+    .top-header .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .top-header .brand-logo {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      object-fit: contain;
+      background: #ECFDF5;
+      padding: 4px;
+    }
+
+    .top-header .brand-title {
+      font-size: 19px;
+      font-weight: 800;
+      color: #0F172A;
+      letter-spacing: -0.3px;
+    }
+
+    .top-header .header-action {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid #E2E8F0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #FFFFFF;
+      color: #EF4444;
+      cursor: pointer;
+    }
+
+    /* Container */
+    .container {
+      padding: 16px 20px;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* Status Summary Card (Like Screenshot) */
+    .summary-card {
+      background: #FFFFFF;
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+      border: 1px solid #F1F5F9;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .summary-info {
+      flex: 1;
+    }
+
+    .summary-label {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #94A3B8;
+      margin-bottom: 6px;
+    }
+
+    .summary-value {
+      font-size: 20px;
+      font-weight: 800;
+      color: #0F172A;
+      margin-bottom: 8px;
+    }
+
+    .summary-subitem {
+      font-size: 13px;
+      color: var(--text-sub);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 4px;
+    }
+
+    .summary-subitem .badge {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10B981;
+    }
+
+    /* Circular Ring Chart (Like Screenshot) */
+    .ring-wrapper {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .ring-svg {
+      width: 100%;
+      height: 100%;
+      transform: rotate(-90deg);
+    }
+
+    .ring-bg {
+      fill: none;
+      stroke: #EEF2FF;
+      stroke-width: 9;
+    }
+
+    .ring-progress {
+      fill: none;
+      stroke: var(--primary);
+      stroke-width: 9;
+      stroke-linecap: round;
+      stroke-dasharray: 251.2;
+      stroke-dashoffset: 25.12; /* ~90% */
+      transition: stroke-dashoffset 1s ease;
+    }
+
+    .ring-text {
+      position: absolute;
+      text-align: center;
+    }
+
+    .ring-text .percentage {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .ring-text .subtext {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--text-sub);
+    }
+
+    /* Section Headers */
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      padding: 0 2px;
+    }
+
+    .section-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: #0F172A;
+    }
+
+    .section-link {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+
+    /* Menu Cards List (Like Screenshot) */
+    .menu-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .menu-card {
+      background: #FFFFFF;
+      border-radius: 16px;
+      padding: 14px 16px;
+      box-shadow: 0 2px 10px -2px rgba(0, 0, 0, 0.04);
+      border: 1px solid #F1F5F9;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .menu-card:active {
+      transform: scale(0.98);
+      background: #F8FAFC;
+    }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .card-icon svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .card-content {
+      flex: 1;
+    }
+
+    .card-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #0F172A;
+      margin-bottom: 2px;
+    }
+
+    .card-desc {
+      font-size: 12px;
+      color: #64748B;
+      line-height: 1.4;
+    }
+
+    .card-arrow {
+      color: #94A3B8;
+      display: flex;
+      align-items: center;
+    }
+
+    /* Colors for Icons */
+    .icon-coral {
+      background: var(--accent-coral);
+      color: var(--accent-coral-icon);
+    }
+    .icon-blue {
+      background: var(--accent-blue);
+      color: var(--accent-blue-icon);
+    }
+    .icon-purple {
+      background: var(--accent-purple);
+      color: var(--accent-purple-icon);
+    }
+    .icon-amber {
+      background: var(--accent-amber);
+      color: var(--accent-amber-icon);
+    }
+    .icon-green {
+      background: #DCFCE7;
+      color: #16A34A;
+    }
+
+    /* Bottom Navigation Bar with Center FAB (Like Screenshot) */
+    .bottom-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: var(--bottom-nav-height);
+      background: #FFFFFF;
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.06);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 0 16px;
+      z-index: 100;
+    }
+
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #94A3B8;
+      text-decoration: none;
+      font-size: 11px;
+      font-weight: 600;
+      width: 56px;
+      height: 100%;
+      transition: color 0.2s;
+    }
+
+    .nav-item.active {
+      color: var(--primary);
+    }
+
+    .nav-item svg {
+      width: 22px;
+      height: 22px;
+      margin-bottom: 3px;
+    }
+
+    /* Floating Action Button (FAB) */
+    .fab-btn {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #6366F1, #4F46E5);
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 20px -4px rgba(79, 70, 229, 0.5);
+      border: 4px solid #FFFFFF;
+      transform: translateY(-20px);
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .fab-btn:active {
+      transform: translateY(-16px) scale(0.95);
+    }
+
+    .fab-btn svg {
+      width: 28px;
+      height: 28px;
+    }
+
+    /* Modal / In-app Webview Modal */
+    .webview-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: #FFFFFF;
+      z-index: 200;
+      flex-direction: column;
+    }
+
+    .webview-modal.show {
+      display: flex;
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 16px;
+      background: #FFFFFF;
+      border-bottom: 1px solid #E2E8F0;
+    }
+
+    .modal-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #0F172A;
+    }
+
+    .modal-close {
+      background: #F1F5F9;
+      border: none;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: #64748B;
+      font-weight: bold;
+    }
+
+    .modal-iframe {
+      flex: 1;
+      width: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Header -->
+  <header class="top-header">
+    <div class="brand">
+      <img src="https://wargasirod.my.id/img/logo-rt06.png" alt="Logo RT 06" class="brand-logo" onerror="this.style.display='none'">
+      <div>
+        <h1 class="brand-title">Warga Sirod</h1>
+      </div>
+    </div>
+    <a href="https://wa.me/6283834412891" target="_blank" class="header-action" title="Hubungi RT">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path>
+        <line x1="12" y1="2" x2="12" y2="12"></line>
+      </svg>
+    </a>
+  </header>
+
+  <main class="container">
+
+    <!-- Status Card (Dashboard Widget) -->
+    <div class="summary-card">
+      <div class="summary-info">
+        <div class="summary-label">Status Iuran Kas RT</div>
+        <div class="summary-value">Rp 25.000 / bln</div>
+        <div class="summary-subitem">
+          <span class="badge"></span>
+          <span>Status: <strong>Aktif / Lunas</strong></span>
+        </div>
+        <div class="summary-subitem">
+          <span>Periode: <strong>Oktober 2026</strong></span>
+        </div>
+      </div>
+      
+      <!-- Circular Progress Ring (Like Screenshot) -->
+      <div class="ring-wrapper">
+        <svg class="ring-svg" viewBox="0 0 100 100">
+          <circle class="ring-bg" cx="50" cy="50" r="40" />
+          <circle class="ring-progress" cx="50" cy="50" r="40" />
+        </svg>
+        <div class="ring-text">
+          <div class="percentage">100%</div>
+          <div class="subtext">Lunas</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section: Menu Utama / Pembayaran -->
+    <div class="section-header">
+      <h2 class="section-title">Menu Utama</h2>
+      <a href="javascript:openKasir()" class="section-link">Bayar &rarr;</a>
+    </div>
+
+    <div class="menu-group">
+      <!-- Card 1: Bayar Iuran Kas (Priority) -->
+      <a href="javascript:openKasir()" class="menu-card">
+        <div class="card-icon icon-coral">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="5" width="20" height="14" rx="2"></rect>
+            <line x1="2" y1="10" x2="22" y2="10"></line>
+          </svg>
+        </div>
+        <div class="card-content">
+          <div class="card-title">Bayar Iuran Kas RT</div>
+          <div class="card-desc">Scan QRIS Duitku & Transfer Instan</div>
+        </div>
+        <div class="card-arrow">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </div>
+      </a>
+
+      <!-- Card 2: Cek Tagihan -->
+      <a href="javascript:openPortal()" class="menu-card">
+        <div class="card-icon icon-blue">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+            <polyline points="10 9 9 9 8 9"></polyline>
+          </svg>
+        </div>
+        <div class="card-content">
+          <div class="card-title">Cek Status Tagihan</div>
+          <div class="card-desc">Cek data tagihan & rekap kas warga</div>
+        </div>
+        <div class="card-arrow">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </div>
+      </a>
+    </div>
+
+    <!-- Section: Layanan Mandiri Warga -->
+    <div class="section-header">
+      <h2 class="section-title">Layanan Warga</h2>
+      <a href="javascript:openPortal()" class="section-link">Lainnya &rarr;</a>
+    </div>
+
+    <div class="menu-group">
+      <!-- Card 3: Riwayat Pembayaran -->
+      <a href="javascript:openKasir()" class="menu-card">
+        <div class="card-icon icon-purple">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+        </div>
+        <div class="card-content">
+          <div class="card-title">Riwayat & Simpan Nota</div>
+          <div class="card-desc">Arsip bukti transfer & download nota</div>
+        </div>
+        <div class="card-arrow">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </div>
+      </a>
+
+      <!-- Card 4: WhatsApp Pengurus RT -->
+      <a href="https://wa.me/6283834412891" target="_blank" class="menu-card">
+        <div class="card-icon icon-amber">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+          </svg>
+        </div>
+        <div class="card-content">
+          <div class="card-title">Hubungi Pengurus RT</div>
+          <div class="card-desc">Chat WhatsApp admin (+62 838-3441-2891)</div>
+        </div>
+        <div class="card-arrow">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </div>
+      </a>
+
+      <!-- Card 5: Portal Web Penuh -->
+      <a href="javascript:openPortal()" class="menu-card">
+        <div class="card-icon icon-green">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+        </div>
+        <div class="card-content">
+          <div class="card-title">Portal Penuh Warga Sirod</div>
+          <div class="card-desc">Buka situs lengkap wargasirod.my.id</div>
+        </div>
+        <div class="card-arrow">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </div>
+      </a>
+    </div>
+
+  </main>
+
+  <!-- Bottom Navigation Bar with Center FAB -->
+  <nav class="bottom-bar">
+    <a href="javascript:void(0)" class="nav-item active">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+      </svg>
+      <span>Beranda</span>
+    </a>
+
+    <a href="javascript:openPortal()" class="nav-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+      </svg>
+      <span>Tagihan</span>
+    </a>
+
+    <!-- Center Floating Action Button (FAB) -->
+    <a href="javascript:openKasir()" class="fab-btn" title="Bayar Sekarang">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <line x1="12" y1="5" x2="12" y2="19"></line>
+        <line x1="5" y1="12" x2="19" y2="12"></line>
+      </svg>
+    </a>
+
+    <a href="javascript:openKasir()" class="nav-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+        <polyline points="14 2 14 8 20 8"></polyline>
+        <line x1="16" y1="13" x2="8" y2="13"></line>
+        <line x1="16" y1="17" x2="8" y2="17"></line>
+      </svg>
+      <span>Riwayat</span>
+    </a>
+
+    <a href="https://wa.me/6283834412891" target="_blank" class="nav-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+        <circle cx="12" cy="7" r="4"></circle>
+      </svg>
+      <span>Profil</span>
+    </a>
+  </nav>
+
+  <!-- In-app WebView Modal -->
+  <div id="webviewModal" class="webview-modal">
+    <div class="modal-header">
+      <span id="modalTitle" class="modal-title">Kas RT</span>
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+    </div>
+    <iframe id="modalIframe" class="modal-iframe" src="about:blank"></iframe>
+  </div>
+
+  <script>
+    function openKasir() {
+      // In mobile app, directly navigate or open modal
+      window.location.href = "https://wargasirod.my.id/kasir";
+    }
+
+    function openPortal() {
+      window.location.href = "https://wargasirod.my.id/";
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('webviewModal');
+      modal.classList.remove('show');
+      document.getElementById('modalIframe').src = 'about:blank';
+    }
+  </script>
+
+</body>
+</html>
