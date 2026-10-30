@@ -4,11 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Warga Sirod RT 06</title>
+  
   <!-- PWA Manifest & Icons -->
   <link rel="manifest" href="manifest.json">
   <link rel="icon" type="image/png" href="https://wargasirod.my.id/img/logo-rt06.png">
   <link rel="apple-touch-icon" href="https://wargasirod.my.id/img/logo-rt06.png">
   <meta name="theme-color" content="#FFFFFF">
+  
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,14 +21,22 @@
       --primary: #4F46E5;
       --primary-dark: #3730A3;
       --primary-light: #EEF2FF;
+      
       --accent-coral: #FEE2E2;
-      --accent-coral-icon: #EF4444;
+      --accent-coral-icon: #DC2626;
+      
       --accent-blue: #E0F2FE;
       --accent-blue-icon: #0284C7;
+      
       --accent-purple: #F3E8FF;
       --accent-purple-icon: #9333EA;
+      
+      --accent-green: #DCFCE7;
+      --accent-green-icon: #16A34A;
+      
       --accent-amber: #FEF3C7;
       --accent-amber-icon: #D97706;
+      
       --bg-page: #F8FAFC;
       --card-bg: #FFFFFF;
       --text-main: #0F172A;
@@ -49,12 +59,12 @@
       min-height: 100vh;
     }
 
-    /* Top Header */
+    /* Top Sticky Header */
     .top-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 18px 20px;
+      padding: 16px 20px;
       background: #FFFFFF;
       position: sticky;
       top: 0;
@@ -69,19 +79,27 @@
     }
 
     .top-header .brand-logo {
-      width: 36px;
-      height: 36px;
-      border-radius: 10px;
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
       object-fit: contain;
       background: #ECFDF5;
       padding: 4px;
+      border: 1px solid #D1FAE5;
     }
 
-    .top-header .brand-title {
-      font-size: 19px;
+    .top-header .brand-text h1 {
+      font-size: 18px;
       font-weight: 800;
       color: #0F172A;
       letter-spacing: -0.3px;
+      line-height: 1.2;
+    }
+
+    .top-header .brand-text span {
+      font-size: 12px;
+      color: #64748B;
+      font-weight: 500;
     }
 
     .top-header .header-action {
@@ -93,8 +111,9 @@
       align-items: center;
       justify-content: center;
       background: #FFFFFF;
-      color: #EF4444;
-      cursor: pointer;
+      color: #10B981;
+      text-decoration: none;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     }
 
     /* Container */
@@ -104,7 +123,7 @@
       margin: 0 auto;
     }
 
-    /* Status Summary Card (Like Screenshot) */
+    /* Status Summary Card (Widget Dashboard Sesuai Gambar) */
     .summary-card {
       background: #FFFFFF;
       border-radius: 20px;
@@ -122,8 +141,8 @@
     }
 
     .summary-label {
-      font-size: 12px;
-      font-weight: 600;
+      font-size: 11px;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.5px;
       color: #94A3B8;
@@ -146,22 +165,22 @@
       margin-bottom: 4px;
     }
 
-    .summary-subitem .badge {
-      display: inline-block;
+    .summary-subitem .badge-dot {
       width: 8px;
       height: 8px;
       border-radius: 50%;
       background: #10B981;
     }
 
-    /* Circular Ring Chart (Like Screenshot) */
+    /* Circular Ring Chart */
     .ring-wrapper {
       position: relative;
-      width: 100px;
-      height: 100px;
+      width: 95px;
+      height: 95px;
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-shrink: 0;
     }
 
     .ring-svg {
@@ -223,12 +242,9 @@
       font-weight: 600;
       color: var(--primary);
       text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 2px;
     }
 
-    /* Menu Cards List (Like Screenshot) */
+    /* Menu Cards Group */
     .menu-group {
       display: flex;
       flex-direction: column;
@@ -239,7 +255,7 @@
     .menu-card {
       background: #FFFFFF;
       border-radius: 16px;
-      padding: 14px 16px;
+      padding: 16px;
       box-shadow: 0 2px 10px -2px rgba(0, 0, 0, 0.04);
       border: 1px solid #F1F5F9;
       display: flex;
@@ -249,6 +265,7 @@
       color: inherit;
       transition: all 0.2s ease;
       cursor: pointer;
+      position: relative;
     }
 
     .menu-card:active {
@@ -256,9 +273,28 @@
       background: #F8FAFC;
     }
 
+    /* Special Highlight for Priority Menu */
+    .menu-card.priority-card {
+      border: 2px solid #FCA5A5;
+      background: linear-gradient(to right, #FFF5F5, #FFFFFF);
+    }
+
+    .priority-badge {
+      position: absolute;
+      top: 10px;
+      right: 40px;
+      background: #EF4444;
+      color: white;
+      font-size: 10px;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 20px;
+      letter-spacing: 0.5px;
+    }
+
     .card-icon {
-      width: 48px;
-      height: 48px;
+      width: 50px;
+      height: 50px;
       border-radius: 14px;
       display: flex;
       align-items: center;
@@ -267,8 +303,8 @@
     }
 
     .card-icon svg {
-      width: 24px;
-      height: 24px;
+      width: 26px;
+      height: 26px;
     }
 
     .card-content {
@@ -277,9 +313,12 @@
 
     .card-title {
       font-size: 15px;
-      font-weight: 700;
+      font-weight: 800;
       color: #0F172A;
-      margin-bottom: 2px;
+      margin-bottom: 3px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
 
     .card-desc {
@@ -294,7 +333,7 @@
       align-items: center;
     }
 
-    /* Colors for Icons */
+    /* Icon Color Themes */
     .icon-coral {
       background: var(--accent-coral);
       color: var(--accent-coral-icon);
@@ -307,16 +346,16 @@
       background: var(--accent-purple);
       color: var(--accent-purple-icon);
     }
+    .icon-green {
+      background: var(--accent-green);
+      color: var(--accent-green-icon);
+    }
     .icon-amber {
       background: var(--accent-amber);
       color: var(--accent-amber-icon);
     }
-    .icon-green {
-      background: #DCFCE7;
-      color: #16A34A;
-    }
 
-    /* Bottom Navigation Bar with Center FAB (Like Screenshot) */
+    /* Bottom Navigation Bar (5 Menus Sesuai Permintaan) */
     .bottom-bar {
       position: fixed;
       bottom: 0;
@@ -328,8 +367,9 @@
       display: flex;
       justify-content: space-around;
       align-items: center;
-      padding: 0 16px;
+      padding: 0 8px;
       z-index: 100;
+      border-top: 1px solid #F1F5F9;
     }
 
     .nav-item {
@@ -340,8 +380,8 @@
       color: #94A3B8;
       text-decoration: none;
       font-size: 11px;
-      font-weight: 600;
-      width: 56px;
+      font-weight: 700;
+      flex: 1;
       height: 100%;
       transition: color 0.2s;
     }
@@ -356,110 +396,77 @@
       margin-bottom: 3px;
     }
 
-    /* Floating Action Button (FAB) */
+    /* Floating Action Button (FAB) untuk Bayar Prioritas di Tengah */
+    .fab-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+      height: 100%;
+      text-decoration: none;
+    }
+
     .fab-btn {
-      width: 58px;
-      height: 58px;
+      width: 54px;
+      height: 54px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #6366F1, #4F46E5);
+      background: linear-gradient(135deg, #EF4444, #DC2626);
       color: #FFFFFF;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 8px 20px -4px rgba(79, 70, 229, 0.5);
-      border: 4px solid #FFFFFF;
-      transform: translateY(-20px);
-      text-decoration: none;
-      cursor: pointer;
+      box-shadow: 0 8px 20px -4px rgba(239, 68, 68, 0.5);
+      border: 3px solid #FFFFFF;
+      transform: translateY(-16px);
       transition: transform 0.2s ease;
     }
 
     .fab-btn:active {
-      transform: translateY(-16px) scale(0.95);
+      transform: translateY(-12px) scale(0.95);
     }
 
     .fab-btn svg {
-      width: 28px;
-      height: 28px;
+      width: 26px;
+      height: 26px;
     }
 
-    /* Modal / In-app Webview Modal */
-    .webview-modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: #FFFFFF;
-      z-index: 200;
-      flex-direction: column;
-    }
-
-    .webview-modal.show {
-      display: flex;
-    }
-
-    .modal-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 14px 16px;
-      background: #FFFFFF;
-      border-bottom: 1px solid #E2E8F0;
-    }
-
-    .modal-title {
-      font-size: 16px;
-      font-weight: 700;
-      color: #0F172A;
-    }
-
-    .modal-close {
-      background: #F1F5F9;
-      border: none;
-      border-radius: 50%;
-      width: 32px;
-      height: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      color: #64748B;
-      font-weight: bold;
-    }
-
-    .modal-iframe {
-      flex: 1;
-      width: 100%;
-      border: none;
+    .fab-label {
+      font-size: 11px;
+      font-weight: 800;
+      color: #DC2626;
+      transform: translateY(-10px);
     }
   </style>
 </head>
 <body>
 
-  <!-- Top Header -->
+  <!-- Top Sticky Header -->
   <header class="top-header">
     <div class="brand">
-      <img src="https://wargasirod.my.id/img/logo-rt06.png" alt="Logo RT 06" class="brand-logo" onerror="this.style.display='none'">
-      <div>
-        <h1 class="brand-title">Warga Sirod</h1>
+      <img src="https://wargasirod.my.id/img/logo-rt06.png" alt="Logo RT 06" class="brand-logo" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'40\' height=\'40\'><rect width=\'40\' height=\'40\' fill=\'%2310B981\' rx=\'12\'/><text x=\'20\' y=\'25\' fill=\'%23fff\' font-size=\'16\' font-weight=\'bold\' text-anchor=\'middle\'>WS</text></svg>'">
+      <div class="brand-text">
+        <h1>Warga Sirod</h1>
+        <span>Layanan Digital Warga RT 06</span>
       </div>
     </div>
-    <a href="https://wa.me/6283834412891" target="_blank" class="header-action" title="Hubungi RT">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path>
-        <line x1="12" y1="2" x2="12" y2="12"></line>
+    <!-- WhatsApp Support Shortcut -->
+    <a href="https://wa.me/6283834412891" target="_blank" class="header-action" title="Kontak Support RT">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
       </svg>
     </a>
   </header>
 
   <main class="container">
 
-    <!-- Status Card (Dashboard Widget) -->
+    <!-- Status Summary Card (Widget Dashboard Sesuai Gambar) -->
     <div class="summary-card">
       <div class="summary-info">
-        <div class="summary-label">Status Iuran Kas RT</div>
+        <div class="summary-label">Status Iuran Kas Warga</div>
         <div class="summary-value">Rp 25.000 / bln</div>
         <div class="summary-subitem">
-          <span class="badge"></span>
+          <span class="badge-dot"></span>
           <span>Status: <strong>Aktif / Lunas</strong></span>
         </div>
         <div class="summary-subitem">
@@ -467,7 +474,7 @@
         </div>
       </div>
       
-      <!-- Circular Progress Ring (Like Screenshot) -->
+      <!-- Circular Progress Ring (Sesuai Screenshot) -->
       <div class="ring-wrapper">
         <svg class="ring-svg" viewBox="0 0 100 100">
           <circle class="ring-bg" cx="50" cy="50" r="40" />
@@ -475,20 +482,22 @@
         </svg>
         <div class="ring-text">
           <div class="percentage">100%</div>
-          <div class="subtext">Lunas</div>
+          <div class="subtext">Disiplin</div>
         </div>
       </div>
     </div>
 
-    <!-- Section: Menu Utama / Pembayaran -->
+    <!-- Section: 5 Menu Inti Sesuai Permintaan Pengguna -->
     <div class="section-header">
-      <h2 class="section-title">Menu Utama</h2>
-      <a href="javascript:openKasir()" class="section-link">Bayar &rarr;</a>
+      <h2 class="section-title">Menu Utama Warga</h2>
+      <span class="section-link">Layanan RT 06</span>
     </div>
 
     <div class="menu-group">
-      <!-- Card 1: Bayar Iuran Kas (Priority) -->
-      <a href="javascript:openKasir()" class="menu-card">
+      
+      <!-- 1. BAYAR (PRIORITAS) 💳 -->
+      <a href="https://wargasirod.my.id/kasir" class="menu-card priority-card">
+        <span class="priority-badge">PRIORITAS</span>
         <div class="card-icon icon-coral">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <rect x="2" y="5" width="20" height="14" rx="2"></rect>
@@ -496,16 +505,19 @@
           </svg>
         </div>
         <div class="card-content">
-          <div class="card-title">Bayar Iuran Kas RT</div>
-          <div class="card-desc">Scan QRIS Duitku & Transfer Instan</div>
+          <div class="card-title">
+            <span>Bayar (Prioritas)</span>
+            <span>💳</span>
+          </div>
+          <div class="card-desc">Akses langsung ke menu transaksi / pembayaran kas &amp; iuran</div>
         </div>
         <div class="card-arrow">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
         </div>
       </a>
 
-      <!-- Card 2: Cek Tagihan -->
-      <a href="javascript:openPortal()" class="menu-card">
+      <!-- 2. TAGIHAN 📄 -->
+      <a href="https://wargasirod.my.id/" class="menu-card">
         <div class="card-icon icon-blue">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
@@ -516,24 +528,19 @@
           </svg>
         </div>
         <div class="card-content">
-          <div class="card-title">Cek Status Tagihan</div>
-          <div class="card-desc">Cek data tagihan & rekap kas warga</div>
+          <div class="card-title">
+            <span>Tagihan</span>
+            <span>📄</span>
+          </div>
+          <div class="card-desc">Cek daftar tunggakan dan tagihan aktif warga</div>
         </div>
         <div class="card-arrow">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
         </div>
       </a>
-    </div>
 
-    <!-- Section: Layanan Mandiri Warga -->
-    <div class="section-header">
-      <h2 class="section-title">Layanan Warga</h2>
-      <a href="javascript:openPortal()" class="section-link">Lainnya &rarr;</a>
-    </div>
-
-    <div class="menu-group">
-      <!-- Card 3: Riwayat Pembayaran -->
-      <a href="javascript:openKasir()" class="menu-card">
+      <!-- 3. RIWAYAT 🕒 -->
+      <a href="https://wargasirod.my.id/kasir" class="menu-card">
         <div class="card-icon icon-purple">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="10"></circle>
@@ -541,87 +548,103 @@
           </svg>
         </div>
         <div class="card-content">
-          <div class="card-title">Riwayat & Simpan Nota</div>
-          <div class="card-desc">Arsip bukti transfer & download nota</div>
+          <div class="card-title">
+            <span>Riwayat</span>
+            <span>🕒</span>
+          </div>
+          <div class="card-desc">Cek arsip bukti dan status pembayaran terdahulu</div>
         </div>
         <div class="card-arrow">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
         </div>
       </a>
 
-      <!-- Card 4: WhatsApp Pengurus RT -->
-      <a href="https://wa.me/6283834412891" target="_blank" class="menu-card">
-        <div class="card-icon icon-amber">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
-          </svg>
-        </div>
-        <div class="card-content">
-          <div class="card-title">Hubungi Pengurus RT</div>
-          <div class="card-desc">Chat WhatsApp admin (+62 838-3441-2891)</div>
-        </div>
-        <div class="card-arrow">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
-        </div>
-      </a>
-
-      <!-- Card 5: Portal Web Penuh -->
-      <a href="javascript:openPortal()" class="menu-card">
+      <!-- 4. BERANDA 🏠 -->
+      <a href="https://wargasirod.my.id/" class="menu-card">
         <div class="card-icon icon-green">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"></circle>
-            <line x1="2" y1="12" x2="22" y2="12"></line>
-            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
           </svg>
         </div>
         <div class="card-content">
-          <div class="card-title">Portal Penuh Warga Sirod</div>
-          <div class="card-desc">Buka situs lengkap wargasirod.my.id</div>
+          <div class="card-title">
+            <span>Beranda</span>
+            <span>🏠</span>
+          </div>
+          <div class="card-desc">Halaman utama pengumuman &amp; informasi warga</div>
         </div>
         <div class="card-arrow">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
         </div>
       </a>
+
+      <!-- 5. PROFIL 👤 -->
+      <a href="https://wargasirod.my.id/" class="menu-card">
+        <div class="card-icon icon-amber">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </div>
+        <div class="card-content">
+          <div class="card-title">
+            <span>Profil</span>
+            <span>👤</span>
+          </div>
+          <div class="card-desc">Informasi akun warga, login, dan data keluarga</div>
+        </div>
+        <div class="card-arrow">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </div>
+      </a>
+
     </div>
 
   </main>
 
-  <!-- Bottom Navigation Bar with Center FAB -->
+  <!-- Bottom Navigation Bar (5 Menu Inti) -->
   <nav class="bottom-bar">
-    <a href="javascript:void(0)" class="nav-item active">
+    <!-- 1. Beranda 🏠 -->
+    <a href="https://wargasirod.my.id/" class="nav-item">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
         <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
       </svg>
       <span>Beranda</span>
     </a>
 
-    <a href="javascript:openPortal()" class="nav-item">
+    <!-- 2. Tagihan 📄 -->
+    <a href="https://wargasirod.my.id/" class="nav-item">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+        <line x1="16" y1="13" x2="8" y2="13"></line>
+        <line x1="16" y1="17" x2="8" y2="17"></line>
       </svg>
       <span>Tagihan</span>
     </a>
 
-    <!-- Center Floating Action Button (FAB) -->
-    <a href="javascript:openKasir()" class="fab-btn" title="Bayar Sekarang">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-        <line x1="12" y1="5" x2="12" y2="19"></line>
-        <line x1="5" y1="12" x2="19" y2="12"></line>
-      </svg>
+    <!-- 3. Bayar (Prioritas - Tombol Tengah FAB Besar) 💳 -->
+    <a href="https://wargasirod.my.id/kasir" class="fab-wrapper">
+      <div class="fab-btn" title="Bayar Kas & Iuran">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+          <rect x="2" y="5" width="20" height="14" rx="2"></rect>
+          <line x1="2" y1="10" x2="22" y2="10"></line>
+        </svg>
+      </div>
+      <span class="fab-label">Bayar</span>
     </a>
 
-    <a href="javascript:openKasir()" class="nav-item">
+    <!-- 4. Riwayat 🕒 -->
+    <a href="https://wargasirod.my.id/kasir" class="nav-item">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-        <polyline points="14 2 14 8 20 8"></polyline>
-        <line x1="16" y1="13" x2="8" y2="13"></line>
-        <line x1="16" y1="17" x2="8" y2="17"></line>
+        <circle cx="12" cy="12" r="10"></circle>
+        <polyline points="12 6 12 12 16 14"></polyline>
       </svg>
       <span>Riwayat</span>
     </a>
 
-    <a href="https://wa.me/6283834412891" target="_blank" class="nav-item">
+    <!-- 5. Profil 👤 -->
+    <a href="https://wargasirod.my.id/" class="nav-item">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
         <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
         <circle cx="12" cy="7" r="4"></circle>
@@ -629,32 +652,6 @@
       <span>Profil</span>
     </a>
   </nav>
-
-  <!-- In-app WebView Modal -->
-  <div id="webviewModal" class="webview-modal">
-    <div class="modal-header">
-      <span id="modalTitle" class="modal-title">Kas RT</span>
-      <button class="modal-close" onclick="closeModal()">&times;</button>
-    </div>
-    <iframe id="modalIframe" class="modal-iframe" src="about:blank"></iframe>
-  </div>
-
-  <script>
-    function openKasir() {
-      // In mobile app, directly navigate or open modal
-      window.location.href = "https://wargasirod.my.id/kasir";
-    }
-
-    function openPortal() {
-      window.location.href = "https://wargasirod.my.id/";
-    }
-
-    function closeModal() {
-      const modal = document.getElementById('webviewModal');
-      modal.classList.remove('show');
-      document.getElementById('modalIframe').src = 'about:blank';
-    }
-  </script>
 
 </body>
 </html>
