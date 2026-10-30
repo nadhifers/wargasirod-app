@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary Civic / Community Green Theme -->
+    <color name="primary">#107C41</color>
+    <color name="primary_dark">#0B532B</color>
+    <color name="primary_light">#E8F5E9</color>
+    <color name="accent">#FF9800</color>
+
+    <color name="splash_bg">#107C41</color>
+    <color name="window_bg">#F8F9FA</color>
+    <color name="bottom_nav_bg">#FFFFFF</color>
+
+    <!-- Text Colors -->
+    <color name="text_primary">#212121</color>
+    <color name="text_secondary">#757575</color>
+    <color name="text_muted">#9E9E9E</color>
+
+    <!-- Nav State Colors -->
+    <color name="nav_active">#107C41</color>
+    <color name="nav_inactive">#8E8E93</color>
+
+    <!-- Utility Colors -->
+    <color name="white">#FFFFFF</color>
+    <color name="white_70">#B3FFFFFF</color>
+    <color name="white_50">#80FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="divider">#E0E0E0</color>
+    <color name="danger">#D32F2F</color>
+    <color name="success">#388E3C</color>
+</resources>

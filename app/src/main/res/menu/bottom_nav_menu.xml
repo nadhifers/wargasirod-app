@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/ic_nav_home"
+        android:title="Beranda" />
+
+    <item
+        android:id="@+id/nav_bayar"
+        android:icon="@drawable/ic_nav_payment"
+        android:title="Bayar" />
+
+    <item
+        android:id="@+id/nav_tagihan"
+        android:icon="@drawable/ic_nav_bill"
+        android:title="Tagihan" />
+
+    <item
+        android:id="@+id/nav_riwayat"
+        android:icon="@drawable/ic_nav_history"
+        android:title="Riwayat" />
+
+    <item
+        android:id="@+id/nav_profil"
+        android:icon="@drawable/ic_nav_profile"
+        android:title="Profil" />
+
+</menu>

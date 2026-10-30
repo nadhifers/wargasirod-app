@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Warga Sirod</string>
+    <string name="menu_home">Beranda</string>
+    <string name="menu_bayar">Pembayaran</string>
+    <string name="menu_tagihan">Tagihan</string>
+    <string name="menu_riwayat">Riwayat</string>
+    <string name="menu_profil">Profil</string>
+</resources>
